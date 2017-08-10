@@ -1,0 +1,116 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+body { 
+	font: 14px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;  
+	background: gainsboro; 
+}
+
+.content{
+	margin: 0px auto;
+	width: 90%;
+}
+
+.train_title{
+	width: 100%;
+	height: 43px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.train_title span{
+	font-size: 35px;
+	line-height: 43px;
+}
+
+.searchTrain{
+	margin-top: 30px;
+	
+}
+
+.searchTrain span input{
+	width: 45%;
+	height: 6vh;
+	border: none;
+	border-radius: 6px;
+	border-color: #ffffff;
+	background-color: transparent;
+	border-bottom: 1px solid #fff;
+	padding-left: 20.5%;
+}
+
+.searchTrain span input:focus{
+	outline: none;
+}
+
+.searchTrain span img{
+	width: 22px;
+	height: 22px;
+}
+
+.searchTrain span input::-webkit-input-placeholder{
+	color: #8e8e93;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.searchbtn{
+	width: 100%;
+	height: 40px;
+	margin-top: 40px;
+	text-align: center;
+	border-radius: 4px;
+	background-color: #388bff;
+}
+
+.searchbtn button{
+	width: 100%;
+	height: 100%;
+	color: #ffffff;
+	font-weight: bold;
+	font-size: 16px;
+	background-color: transparent;
+	cursor: pointer;
+	border: none;
+	outline: none;
+}
+
+.icon{
+	width: 100%;
+	height: 70px;
+	margin-top: 15%;
+	background-color: #ffffff;
+}
+
+.wrap{
+	width: 23%;
+	float: left;
+	margin-right: 2%;
+	
+}
+
+.image{
+	width: 100%;
+	
+}
+
+.image img{
+	display: block;
+	margin: 0px auto;
+}
+
+.introduce{
+	width: 100%;
+	height: 20px;
+}
+
+.introduce span{
+	display: block;
+	text-align: center;
+	font-size: 15px;
+	color: #b7b4b4;
+	line-height: 20px;
+}

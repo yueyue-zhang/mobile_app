@@ -1,0 +1,129 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.html{
+	margin: 0;
+}
+.body{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	font-size: 1.4rem;
+	font-family: "微软雅黑";
+}
+
+.head{
+	width:100%;
+	height: 50px;
+	margin: 0px;
+	background-color: #12b7f5;
+}
+
+
+.title{
+	width: 100px;
+	height: 30px;
+	/*position: absolute;*/
+	/*background: pink;*/
+	/*float: left;*/
+	padding-top: 10px;
+	margin: 0px auto;
+}
+
+.title span{
+	color: white;
+	font-weight: bold;
+	font-size: 22px;
+	text-align: center;
+	display: block;
+}
+
+.foot{
+	width:100%;
+	height: 70px;
+	margin: 0px;
+	background-color: white;
+	border-top: solid 1px gainsboro;
+	position: fixed;
+	bottom: 0;
+}
+
+.contacts,.news,.find{
+	width: 33.33333%;
+	height: 100%;
+	/*background-color: coral;*/
+	float: left;
+}
+
+.contacts:hover,.news:hover,.find:hover{
+	cursor: pointer;
+	outline: none;
+}
+
+
+.footImgLine{
+	width: 100%;
+	height: 35px;
+	margin-top: 10px;
+	/*background: yellow;*/
+}
+
+.footImg{
+	height: 100%;
+	width: 30%;
+	/*background: green;*/
+	margin: 0 auto;
+}
+
+.footImg img{
+	height: 80%;
+	width: 90%;
+}
+
+.footTextLine{
+	width: 100%;
+	height: 15px;
+	margin-top: 0px;
+	/*background-color: yellow;*/
+}
+
+.footText{
+	height: 100%;
+	width: 30%;
+	margin: -3px auto 0 auto;
+	/*background-color: #12B7F5;*/
+}
+
+.footText span{
+	display: block;
+	color: #bfbfbf;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.footTextFocus{
+	height: 100%;
+	width: 30%;
+	margin: -3px auto 0 auto;
+	/*background-color: #12B7F5;*/
+}
+
+.footTextFocus span{
+	color: #12B7F5;
+	display: block;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	margin: 0 auto;
+}
+
+
+
+
+
+
+

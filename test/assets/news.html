@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta charset="utf-8" />
+		<title></title>
+		
+		<link rel="stylesheet" href="css/news.css">
+	</head>
+	
+	<script type="text/javascript" src="js/jquery-1.7.min.js" ></script>
+	<script type="text/javascript">
+		$(function(){
+			getNews("国内焦点");
+		});
+		
+		function getNews(channelName){
+			$.ajax({
+				type:"post",
+				url:"http://route.showapi.com/109-35?"+"showapi_appid=40124"+"&channelId="+"&channelName="+channelName+"&title="+"&page="+"&needContent="+"&needHtml="+"&needAllList="+"&maxResult="+"&showapi_sign=ef7ea56706c74e73a627cd9a4cebf517",
+				beforeSend:function(){
+//					alert("正在请求服务器资源");
+				},  
+				success:function(data){
+					var $news="";
+					var newsList = data.showapi_res_body.pagebean.contentlist;
+					$.each(newsList,function(i,item){
+						
+						var picCon;
+						if(item.imageurls.length >0){
+							picCon = "<img src='"+ item.imageurls[0].url +"' />";
+						}else{
+							picCon = "";
+						}
+						
+						$news += "<a href='"+ item.link + "'>"+
+	                    		"<div class='newsLine'>" + 
+	                    			"<div class='newsTitle'>"+
+	                    				"<span>"+ item.title +"</span>"+
+	                    			"</div>"+
+	                    			"<div class='newsImage'>"+
+	                    				picCon+
+	                    			"</div>" +             		
+	                    		"</div>" +
+	                    	"</a>";
+						
+					});
+					
+					$("#content").append($news);
+				
+
+				},  
+				error:function(){
+					alert("请求服务器资源失败！");
+				}
+			});
+		}
+		
+		function getNewsMethod(channelName){
+//			alert(channelName);
+			$("#content").empty();
+			getNews(channelName);
+			$('#newschannel').css("display","none");
+			$('#plusminusbtn').attr("src","img/head/plus.png");
+			flag = 0;
+			
+		}
+		
+		
+		var flag = 0;
+		function plus(){
+			if(flag == 0){
+				$('#newschannel').css("display","block");
+				$('#plusminusbtn').attr("src","img/head/minus.png");
+				flag = 1;
+			}else{
+				$('#newschannel').css("display","none");
+				$('#plusminusbtn').attr("src","img/head/plus.png");
+				flag = 0;
+			}
+			
+		}
+	
+	</script>
+	
+	<body>
+		<div class="head">
+
+			<div class="title" id="title">
+				<span>新闻</span>
+			</div>	
+			<div class="choose-newschannel-btn">
+				<img src="img/head/plus.png" id="plusminusbtn" onclick="plus()"/>
+			</div>
+		</div>
+		<div class="newschannel" id="newschannel">
+			<div class="channelLine">
+				<div class="channelLineCon">
+					<div class="channel" onclick="getNewsMethod('国内焦点')">
+						<div class="channelText">
+							<div class="channelTextLine">
+								<span>国内焦点</span>
+							</div>
+						</div>
+						
+					</div>
+					<div class="channel" onclick="getNewsMethod('国际焦点')">
+						<div class="channelText">
+							<div class="channelTextLine">
+								<span>国际焦点</span>
+							</div>
+						</div>
+					</div>
+					<div class="channel" onclick="getNewsMethod('娱乐焦点')">
+						<div class="channelText">
+							<div class="channelTextLine">
+								<span>娱乐焦点</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="channelLine">
+				<div class="channelLineCon">
+					<div class="channel" onclick="getNewsMethod('体育焦点')">
+						<div class="channelText">
+							<div class="channelTextLine">
+								<span>体育焦点</span>
+							</div>
+						</div>
+					</div>
+					<div class="channel" onclick="getNewsMethod('科技焦点')">
+						<div class="channelText">
+							<div class="channelTextLine">
+								<span>科技焦点</span>
+							</div>
+						</div>
+					</div>
+					<div class="channel" onclick="getNewsMethod('财经焦点')">
+						<div class="channelText">
+							<div class="channelTextLine">
+								<span>财经焦点</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="content" class="content"></div>
+		
+		<div class="foot">
+			<a href="index.html">
+				<div class="contacts">
+					<div class="footImgLine">
+						<div class="footImg">
+							<img src="img/foot/contacts.png" />
+						</div>
+						<div class="footTextLine">
+							<div class="footText">
+								<span>通讯录</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+			<a href="news.html">
+				<div class="news">
+					<div class="footImgLine">
+						<div class="footImg">
+							<img src="img/foot/news_focus.png" />
+						</div>
+						<div class="footTextLine">
+							<div class="footTextFocus">
+								<span>新闻</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+			<a href="find.html">
+				<div class="find">
+					<div class="footImgLine">
+						<div class="footImg">
+							<img src="img/foot/find.png" />
+						</div>
+						<div class="footTextLine">
+							<div class="footText">
+								<span>发现</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+	</body>
+</html>

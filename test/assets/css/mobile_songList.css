@@ -1,0 +1,75 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+body { 
+	font: 14px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	background: #417e6f; 
+	color: #fff; 
+}
+
+.content{
+	margin: 0px auto;
+	width: 90%;
+}
+
+.music_title{
+	width: 100%;
+	height: 43px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.music_title span{
+	font-size: 35px;
+	line-height: 43px;
+}
+
+.mytab{
+	margin-top: 20px;
+}
+
+.mytab a{
+	color: #fff;
+	font-size: 18px;
+}
+
+.nav > li > a {
+  padding: 10px 6px;
+}
+
+.musicData{
+	float: left;
+	margin-left: 20px;
+	margin-top: 10px;
+}
+
+.image img{
+	width: 14vh;
+	height: 14vh;
+}
+
+.introduce{
+	text-align: center;
+	height: 23px;
+}
+.introduce span{
+	font-size: 16px;
+	line-height: 23px;
+}
+
+.introduce span a{
+	text-decoration: none;
+}
+
+.singerName{
+	text-align: center;
+	height: 23px;
+}
+
+.singerName span{
+	font-size: 14px;
+	line-height: 23px;
+}

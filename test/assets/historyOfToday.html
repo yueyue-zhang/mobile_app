@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>历史上的今天</title>
+	<link rel="stylesheet" type="text/css" href="css/historyOfToday.css">
+	<link rel="stylesheet" type="text/css" href="css/calendar.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			var myDate=new Date();
+			var year=myDate.getFullYear();
+			var month=myDate.getMonth()+1;
+			var date=myDate.getDate();
+			var today="今天是"+year+"年"+month+"月"+date+"日";
+			var todayStr=document.getElementById("today");
+			todayStr.innerHTML=today;
+			postDatas();
+		}
+		
+		function postDatas(){
+			$.ajax({
+				type:"post",
+				url:"http://route.showapi.com/119-42",
+				data:{"showapi_appid":"39990",
+					"showapi_sign":"f2e725a82b4f4af2ba83ebd9f337db6b"},
+				dataType:"json",
+				success:function(data){
+					var divData="";
+					$.each(data.showapi_res_body.list,function(index,row){
+						divData+="<div class='todayThings'>";
+						divData+="<span>"+row.year+"年"+row.month+"月"+row.day+"日"+"</span>";
+						divData+="<span>"+row.title+"</span>";
+					});
+					$("#wrapContent").html(divData);
+				},
+				error:function(){
+					alert("请求服务器资源失败");
+				}
+			});
+		}
+	</script>
+</head>
+<body>
+	<div class="content">
+		<div class="historyTitle">
+			<img src="img/historyToday/historyTitle.png" alt="">
+		</div>
+		<div class="todayDate">
+			<span id="today"></span>
+		</div>
+		<div class="wrapContent" id="wrapContent">
+		
+		</div>
+	</div>
+	
+</body>
+</html>

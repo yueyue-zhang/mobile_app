@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>快递信息查询</title>
+	<link rel="stylesheet" href="css/deliverySearch.css">
+	<script type="text/javascript" src="js/jquery-1.7.min.js"></script>
+</head>
+<body>
+	<div class="content">
+		<!--标题-->
+		<div class="delivery_title"><span>快递查询</span></div>
+		<!---->
+		<div class="delivery_body">
+			<div class="delivery_business">
+				<span>公司名称</span>
+				<span>
+					<select name="" id="test">
+						<option value="yuantong">圆通快递</option>
+						<option value="zhongtong">中通快递</option>
+						<option value="shunfeng">顺丰快递</option>
+						<option value="EMS">EMS快递</option>
+						<option value="shentong">申通快递</option>
+						<option value="huitong">百世汇通快递</option>
+						<option value="yunda">韵达快递</option>
+						<option value="tiantian">天天快递</option>
+						<option value="quanyi">全一快递</option>
+					</select>
+				</span>
+			</div>
+			<div class="delivery_number">
+				<span>快递单号</span>
+				<span><input type="text" placeholder="请输入您的快递单号" id="number"></span>
+				<span><button type="button" id="btn">查询</button></span>
+			</div>
+		</div>
+		<div class="wrap">
+			<div class="one" onclick="change('yuantong')">
+				<span><img src="img/delivery/delivery_yt.png" alt=""></span>
+				<span>圆通</span>
+			</div>
+			<div class="one" onclick="change('zhongtong')">
+				<span><img src="img/delivery/delivery_zt.png" alt=""></span>
+				<span>中通</span>
+			</div>
+			<div class="one" onclick="change('shunfeng')">
+				<span><img src="img/delivery/delivery_sf.png" alt=""></span>
+				<span>顺丰</span>
+			</div>
+			<div class="one" onclick="change('EMS')">
+				<span><img src="img/delivery/delivery_EMS.png" alt=""></span>
+				<span>EMS</span>
+			</div>
+			<div class="one" onclick="change('shentong')">
+				<span><img src="img/delivery/delivery_st.png" alt=""></span>
+				<span>申通</span>
+			</div>
+			<div class="one" onclick="change('huitong')">
+				<span><img src="img/delivery/delivery_bsht.png" alt=""></span>
+				<span>百世汇通</span>
+			</div>
+			<div class="one" onclick="change('yunda')">
+				<span><img src="img/delivery/delivery_yd.png" alt=""></span>
+				<span>韵达快递</span>
+			</div>
+			<div class="one" onclick="change('tiantian')">
+				<span><img src="img/delivery/delivery_tt.png" alt=""></span>
+				<span>天天快递</span>
+			</div>
+			<div class="one" onclick="change('quanyi')">
+				<span><img src="img/delivery/delivery_qy.png" alt=""></span>
+				<span>全一快递</span>
+			</div>
+		</div>
+		<!--物流信息-->
+		
+		<div class="track-rcol">
+			<div class="track-list">
+				<ul id="ulData">
+					<li class="first" id="firstLi">
+						
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function change(name){
+			//alert(name)
+			$("#test").val(name);
+		}
+		
+		$("#btn").click(function(){
+			//alert("查询按钮被点击")
+			//取到快递公司的值
+			var options=$("#test option:selected").val();
+			//取到快递单号的值
+			var delivery_code=$("#number").val();
+			if(options.length<=0||delivery_code.length<=0){
+				alert("快递公司或快递单号的值未填写");
+			}else{
+				postData(options,delivery_code);
+			}
+		});
+		
+	/*options--哪个快递公司 delivery_code--快递单号*/	
+	function postData(options,delivery_code){
+		$.ajax({
+		type:"post",
+		url:" http://route.showapi.com/64-19",
+		data:{"showapi_appid":"40545","showapi_sign":"e2ee2b1b11a64b3da2526413fa141187","com":options,"nu":delivery_code},
+		dataType:"json",
+		beforeSend:function(){
+			//alert("正在请求服务器资源");
+		},    
+		success:function(backdata){
+			//alert(backdata);
+			var listDatas=backdata.showapi_res_body.data;
+			var firstLiData="";
+			var liDatas="";
+			//alert(backdata.showapi_res_body.status)
+			if(typeof(backdata.showapi_res_body.status)=="undefined"){
+				alert("没有找到相应的快递单号");
+			}else{
+				var i=0;
+				if(listDatas.length==0){
+					alert("暂时无法显示快递信息");
+				}
+				$.each(listDatas,function(index,row){
+					var time=row.time;
+					var context=row.context;
+					if(i==0){
+						liDatas+="<li class='first'>";
+						liDatas+="<i class='node-icon'></i>";
+						liDatas+="<span class='time'>"+time+"</span>";
+						liDatas+="<span class='txt'>"+context+"</span>";
+						liDatas+="</li>";
+						i++;
+					}else{
+						liDatas+="<li>";
+						liDatas+="<i class='node-icon'></i>";
+						liDatas+="<span class='time'>"+time+"</span>";
+						liDatas+="<span class='txt'>"+context+"</span>";
+						liDatas+="</li>";
+					}
+				});
+				$("#ulData").html(liDatas);
+				$(".wrap").css("display","none");
+				$(".track-rcol").css("display","block");
+			}
+		},
+		error:function(){
+			alert("请求服务器资源失败！");
+		}
+		});
+	}
+		
+	</script>
+</body>
+</html>

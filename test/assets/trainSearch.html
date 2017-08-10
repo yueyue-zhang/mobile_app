@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>列车查询</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/trainSearch.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+</head>
+<body>
+	<div class="content">
+		<div class="train_title">
+			<span>列车查询</span>
+		</div>
+		<!--轮播图片区域-->
+		<div>
+			<div class="carousel" id="mycarousel">
+				<!--设置图片轮播计数器-->
+				<ol class="carousel-indicators">
+					<li data-target="#mycarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#mycarousel" data-slide-to="1" ></li>
+					<li data-target="#mycarousel" data-slide-to="2" ></li>
+				</ol>
+				<!--轮播图片播放区-->
+				<div class="carousel-inner">
+					<!--放置图片-->
+					<div class="item active">
+						<img src="img/train/train_carousel1.png" alt="">
+					</div>
+					<div class="item">
+						<img src="img/train/train_carousel2.png" alt="">
+					</div>
+					<div class="item">
+						<img src="img/train/train_carousel3.png" alt="">
+					</div>
+				</div>
+				<!--设计图片轮播控制器-->
+				<a href="#mycarousel" class="left carousel-control" data-slide="prev">&lsaquo;</a>
+				<a href="#mycarousel" class="right carousel-control" data-slide="next">&rsaquo;</a>
+			</div>
+		</div>
+		
+		<!--起点->终点-->
+		<div class="searchTrain">
+			<span><input type="text" placeholder="起点" id="start"></span>
+			<span><img src="img/train/train_change.png" alt=""></span>
+			<span><input type="text" placeholder="终点" id="end"></span>
+			
+			<div class="searchbtn">
+				<button type="button" id="btn">查&nbsp;&nbsp;询</button>
+			</div>
+		</div>
+		
+		
+		
+		<!--四个图标-->
+		<div class="icon">
+			<div class="wrap">
+				<div class="image"><img src="img/train/train_hotel.png" alt=""></div>
+				<div class="introduce"><span>酒店</span></div>
+			</div>
+			<div class="wrap">
+				<div class="image"><img src="img/train/taix_1.png" alt=""></div>
+				<div class="introduce"><span>接送火车</span></div>
+			</div>
+			<div class="wrap">
+				<div class="image"><img src="img/train/train_international.png" alt=""></div>
+				<div class="introduce"><span>国际火车</span></div>
+			</div>
+			<div class="wrap">
+				<div class="image"><img src="img/train/train_taxi.png" alt=""></div>
+				<div class="introduce"><span>租车</span></div>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		
+		$("#btn").click(function(){
+			//alert("查询")
+			//获取起点和终点的值
+			var start=$("#start").val();
+			var end=$("#end").val();
+			if(start.length<=0||end.length<=0){
+				alert("起点或终点信息未填写！");
+			}else{
+				postData(start,end);
+			}
+		});
+		
+		//请求数据
+		function postData(start,end){
+			var info="今天"+start+"到"+end+"的火车";
+			$.ajax({
+				type:"post",
+				url:"http://www.tuling123.com/openapi/api",
+				data:{"key":"6e330a8837ac4c92844cefe494835d6a","info":info,"userid":"123456"},
+				dataType:"json",
+				beforeSend:function(){
+					//alert("正在向服务器请求数据");
+				},
+				success:function(data){
+					if(typeof(data.url)=="undefined"){
+						alert("起点或终点信息不存在！请核对后在搜索");
+					}else{
+						window.location.href=data.url;	
+					}
+				},
+				error:function(){
+					alert("请求服务器资源失败");
+				}
+			});
+		}
+	</script>
+</body>
+</html>

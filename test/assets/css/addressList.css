@@ -1,0 +1,60 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+body { 
+	/* font: 14px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;   */
+	background: gainsboro; 
+}
+
+.content{
+	margin: 30px auto 0 auto;
+	width: 80%;
+}
+
+.panel-title span a:hover{
+	text-decoration: none;
+}
+
+.panel-title span img{
+	margin-left: 10%;
+	width: 12vh;
+	height: 12vh;
+	border-radius: 50%;
+}
+
+.panel-title span:nth-child(2){
+	margin-left: 10%;
+	font-size: 18px;
+}
+
+.wrap{
+	width: 100%;
+	height: 30px;
+	text-align: center;
+}
+
+.panel-body span{
+	/*display: inline-block;*/
+}
+
+.panel-body span:nth-child(1){
+	float: left;
+	font-size: 24px;
+}
+
+.panel-body span:nth-child(3){
+	float: right;
+	margin-right: 10%;
+}
+
+.panel-body span:nth-child(2){
+	float: right;
+}
+
+
+.panel-body span img{
+	width: 28px;
+	height: 28px;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>菜谱大全</title>
+	<link rel="stylesheet" href="css/searchFood.css">
+	<script type="text/javascript" src="js/jquery-1.7.min.js"></script>
+</head>
+<body>
+	<div class="search_div">
+		<span>
+			<input id="searchKey" type="search" placeholder="搜索菜谱、食材" >
+		</span>
+		<span><img src="img/search_food/search.png" alt="" onclick="search()"></span>
+	</div>
+	<div class="popular_div">
+		<div class="popular_title">
+			<span>流行搜索</span>
+		</div>
+		<div class="popular_content">
+			<span onclick="search_popular(0)" class="popular_food">蛋糕</span>
+			<span onclick="search_popular(1)" class="popular_food">家常菜</span>
+			<span onclick="search_popular(2)" class="popular_food">早餐</span>
+			<span onclick="search_popular(3)" class="popular_food">排骨</span>
+			<span onclick="search_popular(4)" class="popular_food">红烧肉</span>
+			<span onclick="search_popular(5)" class="popular_food">冰淇淋</span>
+			<span onclick="search_popular(6)" class="popular_food">蛋挞</span>
+			<span onclick="search_popular(7)" class="popular_food">小龙虾</span>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function search(){
+			var food=$("#searchKey").val();
+			if(food==""){
+				alert("请输入您想搜索的菜谱、食材！");
+			}else{
+				var info=food+"怎么做";
+				postData(info);
+			}
+		}
+		
+		function search_popular(id){
+			var popular_food=document.getElementsByClassName("popular_food");
+			var current_food=popular_food[id].innerHTML;
+			//alert(current_food)
+			var info=current_food+"怎么做";
+			postData(info);
+		}
+		
+		function postData(info){
+			$.ajax({
+				type:"post",
+				url:"http://www.tuling123.com/openapi/api",
+				data:{"key":"6e330a8837ac4c92844cefe494835d6a","info":info},
+				dataType:"json",
+				beforeSend:function(){
+					//alert("正在请求服务器资源");
+				},    
+				success:function(data){
+					//alert(JSON.stringify(data));//将json转为字符串
+					//alert(data)
+					//alert(data.text)//亲，已帮您找到菜谱信息
+					//alert(data.url);
+					if(typeof(data.url)=="undefined"){
+						alert("暂时没有此菜谱的信息");
+					}else{
+						window.location.href=data.url;
+					}
+				},  
+				error:function(){
+					alert("请求服务器资源失败！");
+				}
+			});
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>歌曲列表</title>
+	<link rel="stylesheet" href="css/songList.css">
+	<link rel="stylesheet" href="../css/style.css">
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			postDataPopular("32");
+			postData("3");
+		});
+	</script>
+</head>
+<body>
+<div class="content">
+		<div id="nav" >
+		 	<div class="first">
+		 		<a href=" " class="logo">
+		 		&#xe6fb;
+		 		</a>
+		 	</div>
+		 	<div class="nav-cen">
+			<ul class="nav">
+				<li><a href="#" class="work-btn">Work</a><span ></span></li>
+				<li><a href="#" class="services-btn">Services</a><span ></span></li>
+				<li><a href="#" class="contact-btn">Contact</a><span ></span></li>
+			</ul>
+			</div>
+		 	<div class="last">
+		 		<a href="../index.html" class="">
+		 			&#xe63c;
+		 		</a>
+		 	</div>
+		</div>
+	<div class="popular_person">
+		<div class="popular_title">
+			<span>本周流行音乐人</span>
+		</div>
+		<div class="two" id="two">
+			
+		</div>
+	</div>
+	
+	<div class="content_1">
+		<div class="title">
+			<span class="span_title">新碟榜</span>
+			<span><a href="javascript:postData('3')">欧美</a></span>
+			<span><a href="javascript:postData('5')">内地</a></span>
+			<span><a href="javascript:postData('6')">港台</a></span>
+			<span><a href="javascript:postData('17')">日本</a></span>
+			<span><a href="javascript:postData('16')">韩国</a></span>
+			<span><a href="">更多</a></span>
+		</div>
+		<div class="one" id="one">
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+		function postDataPopular(info){
+			$.ajax({
+				type:"post",
+				url:"http://route.showapi.com/213-4",
+				data:{"showapi_appid":"39133", "showapi_sign":"3f310825d078433b9e2b77ce57e0be1d",
+					 "topid":info},
+				dataType:"json",
+				beforeSend:function(){
+					//alert("正在请求服务器资源");
+				},    
+				success:function(data){
+					//alert(data)
+//					alert(JSON.stringify(data));//将json转为字符串
+				   var spanData="";
+				   var popularData="";
+					var i=0;
+					$.each(data.showapi_res_body.pagebean.songlist,function(index,row){
+						var albumpic_big=row.albumpic_big;
+						var songname=row.songname;
+						if(songname.length>10){
+							songname=songname.substring(0,10)+"...";
+						}
+						var singername=row.singername;
+					    var downUrl=row.downUrl;
+						popularData+="<span class='popular_content'>";
+						popularData+="<div class='popular_img'><a href='playSong.html?info="+info+"'><img src="+albumpic_big+"></a></div>";
+					    popularData+="<div class='popular_name'><a href='playSong.html?info="+info+"'>"+songname+"</a></div>";
+					    popularData+="<div class='popular_type'><span>"+singername+"</span></div>";
+						popularData+="</span>";
+						i++;
+						if(i==8){
+							return false;
+						}
+					});
+					$("#two").html(popularData);
+				},  
+				error:function(){
+					alert("请求服务器资源失败！");
+				}
+			});
+		}
+	
+		function postData(info){
+			$.ajax({
+				type:"post",
+				url:"http://route.showapi.com/213-4",
+				data:{"showapi_appid":"39133", "showapi_sign":"3f310825d078433b9e2b77ce57e0be1d",
+					 "topid":info},
+				dataType:"json",
+				beforeSend:function(){
+					//alert("正在请求服务器资源");
+				},    
+				success:function(data){
+				   var spanData="";
+				   var popularData="";
+					var i=0;
+					$.each(data.showapi_res_body.pagebean.songlist,function(index,row){
+						var albumpic_big=row.albumpic_big;
+						var songname=row.songname;
+						
+						var singername=row.singername;
+					    var downUrl=row.downUrl;
+						/*<a href='playsong2.html?downUrl="+downUrl+"&albumpic_big="+albumpic_big+"&songname="+songname+"&singername="+singername+"'><img src="+albumpic_big+"></a>*/
+						spanData+="<span class='oneOf'>";
+					    spanData+="<div class='album'><a href='playSong.html?info="+info+"'><img src="+albumpic_big+"></a></div>";
+						if(songname.length>10){
+							songname=songname.substring(0,10)+"...";
+						}
+					    spanData+="<div class='songName'><a href='playsong.html?info="+info+"'>"+songname+"</a></div>";
+					    spanData+="<div class='singer'><span>"+singername+"</span></div>";
+						spanData+="</span>";
+						i++;
+						if(i==8){
+							return false;
+						}
+					});
+					$("#one").html(spanData);
+				},  
+				error:function(){
+					alert("请求服务器资源失败！");
+				}
+			});
+		}
+</script>
+</body>
+</html>

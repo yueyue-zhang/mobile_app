@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>通讯录</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/addressList.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			//ajax发送请求去读取xml文件
+			$.ajax({
+				type:"post",
+				url:"xml/addresslist.xml",
+				dataType:"xml",
+				beforeSend:function(){
+					//alert("正在向服务器发送请求");
+				},
+				success:function(data){
+					//alert(data);
+					var collapseData="";
+					var i=0;
+					//找到父节点
+					$(data).find("stu").each(function(){
+						var name=$(this).children("name").text();
+						var img=$(this).children("faceimg").text();
+						var phone=$(this).children("phonenumber").text();
+						collapseData+="<div class='panel panel-default'>";
+						collapseData+="<div class='panel-heading'>";
+						collapseData+="<h4 class='panel-title'>";
+						collapseData+="<span><a href='#a"+i+"' data-target='#a"+i+"' data-toggle='collapse' data-parent='#accordion'><img src='img/addresslist/"+img+"'></a></span>";
+						collapseData+="<span><a href='#a"+i+"' data-target='#a"+i+"' data-toggle='collapse' data-parent='#accordion'>"+name+"</a></span></h4></div>";
+						collapseData+="<div class='panel-collapse collapse' id='a"+i+"'><div class='panel-body'><div class='wrap'>";
+						collapseData+="<span>"+phone+"</span>";
+						collapseData+="<span><a href='sms:"+phone+"'><img src='img/addresslist/adeeress_message.png'></a></span>";
+						collapseData+="<span><a href='tel:"+phone+"'><img src='img/addresslist/address_call.png'></a></span>";
+						collapseData+="</div></div></div></div>";
+						i++;
+					});
+					$("#accordion").html(collapseData);
+				},
+				error:function(){
+					alert("请求服务器资源失败");
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="content">
+		<div class="addresslist_title">
+			<span>通讯录</span>
+		</div>
+		<div>
+			<div class="panel-group" id="accordion">
+			</div>
+		</div>
+	</div>
+</body>
+</html>

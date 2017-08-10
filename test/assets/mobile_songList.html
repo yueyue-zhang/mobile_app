@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>手机音乐播放列表</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/mobile_songList.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+</head>
+<body>
+	<div class="content">
+		<div class="music_title">
+			<span>音乐播放器</span>
+		</div>
+		<!--幻灯片区域-->
+		<div class="mycarousel">
+			<div class="carousel" id="mycarousel">
+				<!--设置图片轮播计数器-->
+				<ol class="carousel-indicators">
+					<li data-target="#mycarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#mycarousel" data-slide-to="1" ></li>
+					<li data-target="#mycarousel" data-slide-to="2" ></li>
+				</ol>
+				<!--轮播图片播放区-->
+				<div class="carousel-inner">
+					<!--放置图片-->
+					<div class="item active">
+						<img src="img/music/music_carousel1.jpg" alt="">
+					</div>
+					<div class="item">
+						<img src="img/music/music_carousel2.jpg" alt="">
+					</div>
+					<div class="item">
+						<img src="img/music/music_carousel3.jpg" alt="">
+					</div>
+				</div>
+				<!--设计图片轮播控制器-->
+				<a href="#mycarousel" class="left carousel-control" data-slide="prev">&lsaquo;</a>
+				<a href="#mycarousel" class="right carousel-control" data-slide="next">&rsaquo;</a>
+			</div>
+		</div>
+		<!--选项卡区域-->
+		<div class="mytab">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="popular_list" data-toggle="tab" data-target="#popular_list" class="choiceType" onclick="postData('4','#popular_list')">流行榜</a></li>
+				<li><a href="hot_list" data-toggle="tab" data-target="#hot_list" onclick="postData('26','#hot_list')">热歌</a></li>
+				<li><a href="new_list" data-toggle="tab" data-target="#new_list" onclick="postData('27','#new_list')">新歌</a></li>
+				<li><a href="internet_list" data-toggle="tab" data-target="#internet_list" onclick="postData('28','#internet_list')">网络歌曲</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane active" id="popular_list">
+				</div>
+				<div class="tab-pane" id="hot_list">
+				</div>
+				<div class="tab-pane" id="new_list">
+				</div>
+				<div class="tab-pane" id="internet_list">
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+	$(function(){
+		postData('4','#popular_list');
+	});
+	function postData(info,listId){
+		$.ajax({
+		type:"post",
+		url:"http://route.showapi.com/213-4",
+		data:{"showapi_appid":"39133","showapi_sign":"3f310825d078433b9e2b77ce57e0be1d","topid":info},
+		dataType:"json",
+		beforeSend:function(){
+			//alert("正在请求服务器资源");
+		},    
+		success:function(data){
+			//alert(data);
+			var listDatas=data.showapi_res_body.pagebean.songlist;
+			var spanDatas="";
+			var i=0;
+			$.each(listDatas,function(index,row){
+				//alert(row.url)
+				var songname=row.songname;
+				var singername=row.singername;
+				var myurl="mobile_playsong.html"+"?"+"imgSrc="+row.albumpic_big+"&songname="+songname+"&singername="+singername+"&downUrl="+row.url;
+				
+				var url=encodeURI(myurl);
+				if(songname.length>4){
+					songname=songname.substring(0,4)+"...";
+				}
+				if(singername.length>6){
+					singername=songname.substring(0,6)+"...";
+				}
+				spanDatas+="<span class='musicData'>";
+				spanDatas+="<div class='image'><a href="+url+"><img src="+row.albumpic_big+"></a></div>";
+				spanDatas+="<div class='introduce'><span><a href=''>"+songname+"</a></span></div>";
+				spanDatas+="<div class='singerName'><span>"+singername+"</span></div>";
+				spanDatas+="</span>";
+				i++;
+				if(i==12){
+					return false;
+				}
+			});
+			$(listId).html(spanDatas);
+		},
+		error:function(){
+			alert("请求服务器资源失败！");
+		}
+	});
+	}
+	
+	</script>
+</body>
+</html>

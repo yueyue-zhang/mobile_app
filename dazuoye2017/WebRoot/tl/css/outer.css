@@ -1,0 +1,400 @@
+.train{
+	width: 100%;
+	height: 300px;
+	display: block;
+}
+
+.searchTrain{
+	margin-top: 30px;
+	
+}
+
+.searchTrain span input{
+	width: 48.2%;
+	height: 6vh;
+	border: none;
+	border-radius: 6px;
+	border-color: #ffffff;
+	background-color: transparent;
+	border-bottom: 1px solid #fff;
+	padding-left: 20.5%;
+}
+
+.searchTrain span input:focus{
+	outline: none;
+}
+
+.searchTrain span img{
+	width: 22px;
+	height: 22px;
+}
+
+.searchTrain span input::-webkit-input-placeholder{
+	color: #8e8e93;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.searchbtn{
+	width: 100%;
+	height: 40px;
+	margin-top: 40px;
+	text-align: center;
+	border-radius: 4px;
+	background-color: #0065a5;
+}
+
+.searchbtn button{
+	width: 100%;
+	height: 100%;
+	color: #ffffff;
+	font-weight: bold;
+	font-size: 16px;
+	background-color: transparent;
+	cursor: pointer;
+	border: none;
+	outline: none;
+}
+
+.icon{
+	width: 100%;
+	height: 70px;
+	margin-top: 8%;
+	background-color: #ffffff;
+}
+
+.wrap{
+	width: 23%;
+	float: left;
+	margin-right: 2%;
+	
+}
+
+.image{
+	width: 100%;
+	
+}
+
+.image img{
+	display: block;
+	margin: 0px auto;
+}
+
+.introduce{
+	width: 100%;
+	height: 20px;
+}
+
+.introduce span{
+	display: block;
+	text-align: center;
+	font-size: 15px;
+	color: #b7b4b4;
+	line-height: 20px;
+}
+
+.food{
+	display: none;
+}
+
+
+.food .whole_content{
+	margin: 0 auto;
+	width: 90%;
+	height: 100%;
+}
+.food .search_div{
+	width: 100%;
+	height: 6vh;
+	margin-top: 10px;
+}
+
+.food .search_div span:nth-child(1) input{
+	width: 95%;
+	height: 6vh;
+	border: none;
+	border-radius: 5px;
+	border-color:#fff;
+	background-color: rgba(255,255,255,0.1);
+}
+
+.food .search_div span:nth-child(1) input:focus{
+	outline: none;
+}
+
+.food .search_div span:nth-child(1) input::-webkit-input-placeholder{
+	color: #fff;
+	text-align: center;
+	font-size: 14px;
+}
+
+.food .search_div span:nth-child(2){
+	position: absolute;
+	left: 85%;
+	top: 51.2%;
+}
+.food .search_div span:nth-child(2):hover{
+	cursor: pointer;
+}
+.popular_div{
+	width: 100%;
+	height: 230px;
+}
+
+.popular_title{
+	margin-left: 16px;
+	margin-top: 16px;
+}
+
+.popular_title span{
+	color: #fff;
+	font-size: 22px;
+	font-weight: bold;
+}
+
+.popular_content{
+	margin-top: 10px;
+}
+
+.popular_content span{
+	display: block;
+	width: 80px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	border: 1px solid #0065a5;
+	background-color: rgba(0,0,0,.3);
+	margin-left: 16px;
+	margin-top: 10px;
+	font-size: 20px;
+	float: left;
+}
+
+.popular_content span:hover{
+	cursor: pointer;
+}
+
+.delivery{
+	margin-top: 20px;
+	display: none;
+}
+
+.delivery_body{
+	width: 100%;
+	height: 80px;
+}
+
+.delivery_business{
+	padding-top: 10px;
+	width: 100%;
+}
+
+.delivery_business span:nth-child(1),
+.delivery_number span:nth-child(1){
+	width: 20%;
+	margin-left: 10px;
+	font-size: 15px;
+}
+
+.delivery_business span:nth-child(2){
+	width: 80%;
+}
+
+.delivery_business span select{
+	width: 70%;
+	height: 25px;
+	border: none;
+	border-radius: 4px;
+	opacity: 0.6;
+	color: gray;
+	border: 1px solid #999999;
+}
+
+.delivery_number{
+	width: 100%;
+	margin-top: 10px;
+}
+
+.delivery_number span:nth-child(2){
+	width: 55%;
+}
+
+.delivery_number span input{
+	width: 55%;
+	height: 25px;
+	border: none;
+	border-radius: 4px;
+	opacity: 0.6;
+	border: 1px solid #999999;
+	color: gray;
+}
+
+.delivery_number span input:focus{
+	outline: none;
+}
+
+.delivery_number span input::-webkit-input-placeholder{
+	color: gray;
+}
+
+.delivery_number span button{
+	width: 13%;
+	height: 26px;
+	border-radius: 4px;
+	background-color: #388bff;
+	color: #ffffff;
+	font-weight: bold;
+	font-size: 14px;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	text-align: center;
+}
+
+.delivery .wrap{
+	width: 100%;
+	margin-top: 10px;
+}
+
+.one{
+	width: auto;
+	height: 70px;
+	float: left;
+	margin-top: 10px;
+	margin-right: 10px;
+	border: 1px solid rgba(0,0,0,.1);
+	width: 20%;
+	text-align: center;
+}
+
+.one:hover{
+	cursor: pointer;
+}
+
+.one span:nth-child(1) img{
+	display: block;
+	margin: 5px auto;
+	width: 32px;
+	height: 32px;
+}
+
+.one span:nth-child(2){
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+}
+
+ul li{
+	list-style: none;
+}
+.track-rcol{
+	margin-top: 20px;
+	width: 100%; 
+	border: 1px solid #eee;
+	display: none;
+}
+.track-list{
+	margin: 20px; 
+	padding-left: 5px; 
+	position: relative;
+}
+.track-list li{
+	position: relative; 
+	padding: 9px 0 0 25px; 
+	line-height: 18px; 
+	border-left: 1px solid #eee; 
+	color: #999;
+}
+.track-list li.first{
+	color: red; 
+	padding-top: 0; 
+	border-left-color: #d9d9d9;
+}
+.track-list li .node-icon{
+	position: absolute; 
+	left: -6px; 
+	top: 50%; 
+	width: 11px; 
+	height: 11px; 
+	background: url(../images/delivery_icons.png)  -21px -72px no-repeat;
+}
+.track-list li.first .node-icon{
+	background-position:0 -72px;
+}
+.track-list li .time{
+	margin-right: 20px; 
+	position: relative; 
+	top: 4px; 
+	display: inline-block; 
+	vertical-align: middle;
+}
+.track-list li .txt{
+	max-width: 600px; 
+	position: relative; 
+	top: 4px; 
+	display: inline-block; 
+	vertical-align: middle;
+}
+			
+.track-list li.first .time{
+	margin-right: 20px; 
+}
+			
+.track-list li.first .txt{
+	max-width: 600px; 
+}
+
+
+.weather{
+	margin: 0 auto;
+	width: 90%;
+	background-color: rgba(255,255,255,.5);
+	display: none;
+}
+.weather .search_div{
+	width: 100%;
+	height: 6vh;
+}
+
+.weather .search_div span:nth-child(1) input{
+	width: 50%;
+	height: 6vh;
+	border: none;
+	border-radius: 5px;
+	border-color:#fff;
+	background-color: rgba(255,255,255,0.1);
+}
+
+.weather .search_div span:nth-child(1) input:focus{
+	outline: none;
+}
+
+.weather .search_div span:nth-child(1) input::-webkit-input-placeholder{
+	color: #fff;
+	text-align: center;
+	font-size: 14px;
+}
+
+.weather .search_div span:nth-child(2) button{
+	width: 49%;
+	height: 6vh;
+	border-radius: 5px;
+	background-color: #0065a5;
+	color: #ffffff;
+	font-weight: bold;
+	font-size: 16px;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	text-align: center;
+}
+.weather .search_div span:nth-child(2):hover{
+	cursor: pointer;
+}
+
+.weather #main{
+	width:650px;
+	height:350px;
+	color: #fff;
+	margin-top: 10px;
+}

@@ -1,0 +1,129 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	/*background: url(../images/duoyun.JPG) no-repeat;*/
+}
+	
+.cityName{
+	width: 100%;
+	height: 35px;
+	margin-top: 20px;
+}
+
+.cityName span{
+	display: block;
+	text-align: center;
+	font-size: 35px;
+	line-height: 35px;
+	color: #ffffff;
+}
+
+.curWeather{
+	width: 100%;
+	height: 25px;
+	margin-top: 10px;
+}
+
+.curWeather span{
+	display: block;
+	text-align: center;
+	font-size: 25px;
+	line-height: 25px;
+	color: #ffffff;
+}
+
+.cityTemprature{
+	margin-top: 10px;
+	width: 100%;
+	height: 80px;
+}
+
+.cityTemprature span{
+	display: block;
+	width: 115px;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 80px;
+	line-height: 80px;
+	color: #ffffff;	
+}
+
+.cityToday{
+	width: 100%;
+	height: 30px;
+	border-bottom: 1px solid #ffffff;
+	margin-top: 20px;
+}
+
+.cityToday span{
+	display: inline-block;
+	font-size: 20px;
+	color: #fff;
+}
+
+.cityToday span:nth-child(1){
+	margin-left: 20px;
+	width: 25%;
+}
+
+.cityToday span:nth-child(2){
+	margin-left: 20px;
+	width: 20%;
+}
+
+.cityToday span:nth-child(4){
+	margin-right: 30px;
+	float: right;
+}
+
+.cityToday span:nth-child(3){
+	float: right;
+	margin-right: 20px;
+}
+
+.futureWeather{
+	width: 100%;
+	margin-top: 20px;
+}
+.future{
+	margin-top: 10px;
+	margin-left: 20px;
+	height: 35px;
+}
+
+.future span{
+	display: inline-block;
+	font-size: 18px;
+	line-height: 35px;
+	color: #fff;
+}
+.future span:nth-child(1){
+	width: 35%;
+}
+
+.future span:nth-child(2){
+	width: 25%;
+}
+
+.future span:nth-child(2) img{
+	width: 25px;
+	height: 25px;
+	margin: 0 auto
+} 
+
+.future span:nth-child(4){
+	margin-right: 30px;
+	float: right;
+}
+
+.future span:nth-child(3){
+	
+	float: right;
+	margin-right: 20px;
+}
+
+
+

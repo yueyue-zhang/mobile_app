@@ -1,0 +1,131 @@
+*{
+  font-family:courier;
+}
+
+.calendar{
+	width: 30%;
+	height: 100%;
+	float: right;
+	position: absolute;
+	right: 180px;
+	top: 200px;
+}
+
+.table_head{
+    background-color: rgba(40,191,193,0.6);
+	width: 100%;
+	height: 10vh;
+	text-align: center;
+  }
+
+/*日历头部*/
+.week{
+	width: 100%;
+	margin-top: 50px;
+   border-spacing: 0;   
+}
+
+/*.smlb {
+    font-size: 20px; color: white; float: right; margin-right: 13%; margin-top: -54%;
+}*/
+
+.aorange {
+   font-weight: bold; font-size: 18px; color: #ff5f07; width:12%;
+}
+.day {
+	width: 100%;
+   	font-size: 18px; 
+	color: #000000; 
+}
+.day td{
+	width: 14%;
+    color:#9F9E9E;
+}
+.one {
+   font-weight: normal; font-size: 18px; color: #000000; width:13%;
+}
+.a{
+	width: 100%;
+}
+.bs {
+   font-size: 12px; color: #9F9E9E;width:13%;
+}
+.lb {
+   font-size: 16px; color: #0099ff;
+}
+.sm {
+	width: 100%;
+   font-size: 14px; color: #333399;
+}
+
+#cal-content{
+	width: 100%;
+   height:30px;text-align: center;background-color:"#FAFBFB";
+
+}
+.detallu{
+   width:100%; border:0; padding:2px; color: white;
+}
+.lnotice{
+  margin-top: 34%;
+}
+
+.sm span{
+  color: black;
+
+}
+.thead span{
+   color: #2EBEB7;
+}
+
+/*年份，月份切换*/
+.year_select{
+  display:inline-block;
+}
+
+.month_select{
+	display:inline-block;
+}
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+select::-ms-expand { display: none; }
+.ch{
+  background-color: rgba(40,191,193,0.6);
+}
+.day td{
+  width:57px;color:white; text-align:center;
+}
+select {
+  margin-bottom: 5px; appearance: none;-moz-appearance: none;-webkit-appearance: none;border: 0; border-radius: 2px; color: #000000; padding-top: 6px; background-color: white; padding-bottom: 2px;
+}
+
+.footTable{
+	width: 100%;
+}
+
+div.tishishgen0{ 
+  text-align:center; margin:50px 0 10px 0; color:#666
+}
+
+@media screen and (max-width: 768px) {
+    .calendar{
+		width: 37%;
+		position: absolute;
+		right: 42px;
+		top: 80px;
+	}
+	.one {
+		font-size: 10px;
+		width:15%;
+	}
+	.bs {
+   		font-size: 12px;
+		color: #9F9E9E;
+		width:17%;
+	}
+	.aorange {
+   		font-weight: bold; 
+		font-size: 10px; 
+		color: #ff5f07; 
+		width:20%;
+	}
+}

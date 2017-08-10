@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/videoList.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		var ip="172.20.10.5";
+		$(function(){
+			$.ajax({
+				type:"post",
+				url:"http://"+ip+":8090/dazuoye2017/videoList.do",
+				dataType:"json",
+				beforeSend:function(){
+					//alert("正在向服务器请求数据");
+				},  
+				success:function(data){
+					//alert(data); 
+					var videoDatas="";
+					$.each(data.lists,function(index,row){
+						/*  <div><a href="">1.1 Android平台一日(20:56)</a></div>*/
+						var video_name=row.video_name;
+						var video_path=row.video_path;
+						var play_time=row.play_time;
+						videoDatas+="<div><a href='videoplay.html?path="+video_path+"'>"+video_name+"</a></div>";
+					});  
+					$("#videoData").html(videoDatas);  
+				},   
+				error:function(){
+					alert("请求服务器资源失败");
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="content">
+		<div class="top_content">
+			<span>Mars Android开发 视频教程</span>
+		</div>
+		<div class="title">
+			<span>Android开发视频教学第一季</span>
+		</div>
+		<div class="wrap model_1" id="videoData">
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body { 
+	font: 14px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	background: gainsboro; 
+	width: 90%;
+	margin: 10px auto;
+}
+
+.content{
+	width: 100%;
+}
+
+.temp{
+	width: 100%;
+	height: 180px;
+	border: 2px solid #c8c8c8;
+}
+.code_title{
+	width: 100%;
+	height: 43px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.code_title span{
+	font-size: 35px;
+	line-height: 43px;
+}
+
+.codeimg{
+	margin-left: 20px;
+	margin-top: 20px;
+	width: 28%;
+	height: 145px;
+	background-color: #fec445;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	float: left;
+}
+
+.codeimg img{
+	width: 58px;
+}
+
+.codesearch{
+	width: 55%;
+	float: left;
+	margin-left: 20px;
+	margin-top: 30px;
+}
+
+.search{
+	width: 105%;
+	height: 6vh;
+}
+
+.search span input{
+	width: 95%;
+	height: 6vh;
+	border: none;
+	border-radius: 6px;
+	border-color: #ffffff;
+	background-color: #f0f0ef;
+}
+
+.search span input:focus{
+	outline: none;
+}
+
+.search span input::-webkit-input-placeholder{
+	color: #8e8e93;
+	text-align: center;
+	font-size: 14px;
+}
+
+.searchbtn{
+	width: 100%;
+	height: 40px;
+	margin-top: 40px;
+	text-align: center;
+	border-radius: 4px;
+	background-color: #388bff;
+}
+
+.searchbtn button{
+	width: 100%;
+	height: 100%;
+	color: #ffffff;
+	font-weight: bold;
+	font-size: 16px;
+	background-color: transparent;
+	cursor: pointer;
+	border: none;
+	outline: none;
+}
+
+@media screen and (max-width: 168px) {
+    .codeimg{
+		width: 80px;
+		height: 80px;
+	}
+}

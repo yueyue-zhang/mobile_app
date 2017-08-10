@@ -1,0 +1,340 @@
+* {
+	margin: 0;
+	padding: 0;
+	outline: none;
+	border: none;
+	list-style: none;
+	font-weight: normal;
+	line-height: 1;
+}
+
+html,body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	overflow-x: hidden;
+	overflow-y: scroll;
+	background-image: linear-gradient(to bottom, #94aca8 40%, #907d60, #7c5c38);
+	background-image: -webkit-linear-gradient(to bottom, #94aca8, #907d60, #7c5c38);
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+#nav {
+	position: fixed;
+	width: 100%;
+	height: 55px;
+	z-index: 1;
+	text-align: center;
+	position: relative;
+	background: rgba(0, 0, 0, 0.4);
+}
+
+a {
+	text-decoration: none;
+}
+
+.first {
+	width: 65px;
+	height: 55px;
+	/*background: red;*/
+	position: absolute;
+	left: 0;
+	top: 0;
+	border-right: 2px solid #4F4F4F;
+}
+
+.first a {
+	font-size: 24px;
+	line-height: 50px;
+	text-align: center;
+	color: white;
+	font-family: 'iconfont';
+}
+
+.first:hover {
+	background: #FF5151;
+}
+
+.last {
+	width: 65px;
+	height: 55px;
+	/*background: green;*/
+	position: absolute;
+	right: 0;
+	top: 0;
+	border-left: 2px solid #4F4F4F;
+}
+
+.last a {
+	font-size: 20px;
+	line-height: 50px;
+	text-align: center;
+	color: white;
+	font-family: 'iconfont';
+}
+
+.last:hover {
+	background: #009100;
+}
+
+@font-face {
+	font-family: 'iconfont';
+	src: url('../icon/iconfont.eot');
+	src: url('../icon/iconfont.eot?#iefix') format('embedded-opentype'),
+		url('../icon/iconfont.woff') format('woff'), url('icon/iconfont.ttf')
+		format('truetype'), url('../icon/iconfont.svg#iconfont') format('svg');
+}
+
+.nav {
+	width: auto;
+	height: 55px;
+	/*background: pink;*/
+}
+
+.nav-cen {
+	width: auto;
+	height: 55px;
+}
+
+.nav-cen ul {
+	width: 30%;
+	height: 55px;
+	border: none;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	left: 35%;
+	top: 0px;
+}
+
+.nav li { /*border: 1px solid red;*/
+	margin: 0;
+	width: 32%;
+	height: 55px;
+	float: left;
+	text-align: center;
+	border-right: 2px solid #4F4F4F;
+	/*background: black;*/
+}
+
+.nav li a {
+	height: 55px;
+	display: block;
+	color: white;
+	font-size: 16px;
+	line-height: 48px;
+	text-align: center;
+}
+
+.nav li a:hover {
+	background: #00E3E3;
+	font-size: 18px;
+}
+
+.center {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.cenbox {
+	width: auto;
+	height: 100%;
+}
+
+.cenhea {
+	margin-top: 40px;
+	width: 100%;
+	text-align: center;
+}
+
+.cenhea a {
+	background: rgba(0, 151, 100, 0.2);
+	display: block;
+	border: 2px solid white;
+	border-radius: 50%;
+	width: 150px;
+	height: 150px;
+	font-size: 40px;
+	line-height: 130px;
+	text-align: center;
+	color: #FF9224;
+	font-family: 'iconfont';
+	margin: 0 auto;
+}
+
+.cenhea a:hover {
+	background: rgba(0, 151, 100, 0.5);
+	transition: background 2s;
+}
+
+@keyframes silde { 
+	0%{
+	transform: scale(0.5) rotate(120deg);
+	box-shadow: 0px 0px 4px 3px #F0F8FF;
+	}
+	
+	25%{
+	transform:scale(0.8) rotate(240deg);
+    box-shadow:0px 0px 5px 4px #F0F8FF;
+    }
+    
+    50%{
+	transform:scale(1) rotate(360deg);
+    box-shadow:0px 0px 6px 5px #F0F8FF;
+    }
+    
+    75%{
+	transform: scale(0.8) rotate(240deg);
+	box-shadow: 0px 0px 4px 3px #F0F8FF;
+	}
+    
+    100%{
+	transform: scale(0.5) rotate(120deg);
+	box-shadow: 0px 0px 4px 3px #F0F8FF;
+	}				
+}
+
+.centext {
+	width: 100%;
+	margin-top: 40px;
+	position: relative;
+}
+
+.info {
+	width: 60%;
+	position: absolute;
+	left: 20%;
+	height: 45px;
+}
+
+.info a {
+	width: 100%;
+	display: block;
+	height: 100%;
+	color: white;
+	font-size: 20px;
+	text-align: center;
+	line-height: 40px;
+	border: 1px solid #FF9224;
+	font-family: "Verdana";
+	border-radius: 20px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.info a:hover {
+	background: rgba(255, 255, 255, 0.4);
+	color: #333745;
+	font-size: 22px;
+}
+
+.cenlist {
+	width: 100%;
+	margin-top: 100px;
+	position: relative;
+}
+
+.cenlist-foot {
+	width: 80%;
+	height: 150px;
+	margin-top: 40px;
+	position: absolute;
+	left: 10%;
+}
+
+.footlist {
+	width: 100%;
+	position: absolute;
+	left: 10%;
+}
+
+.cenlist-foot a {
+	text-align: center;
+	line-height: 110px;
+	font-size: 22px;
+	color: #FF8000;
+	display: block;
+	float: left;
+	width: 130px;
+	height: 130px;
+	border-radius: 50%;
+	border: 1px solid white;
+	margin: 10px 20px;
+}
+
+.footlist a:nth-child(1) {
+	background: url(../img/c1.jpg) no-repeat;
+	background-size: cover;
+	background-position: 80% 20%;
+}
+
+.footlist a:nth-child(2) {
+	background: url(../img/c2.jpg) no-repeat;
+	background-size: cover;
+	background-position: 80% 10%;
+}
+
+.footlist a:nth-child(3) {
+	background: url(../img/5.jpg) no-repeat;
+	background-size: cover;
+}
+
+.footlist a:nth-child(4) {
+	background: url(../img/c4.jpg) no-repeat;
+	background-size: cover;
+}
+
+.footlist a:nth-child(5) {
+	background: url(../img/c5.jpg) no-repeat;
+	background-size: cover;
+}
+
+.cenlist-foot a:hover {
+	animation-name: silde;
+	animation-duration: 2s;
+	animation-timing-function: linear;
+	animation-delay: 0s;
+	animation-iteration-count: 1;
+	animation-direction: alternate;
+	animation-play-state: running;
+	animation-fill-mode: none;
+}
+
+.footlist a h3 {
+	display: none;
+}
+
+.footlist a:hover {
+	background: rgba(0, 151, 100, 0.2);
+}
+
+.footlist a:hover h3 {
+	display: block;
+	text-align: center;
+	line-height: 120px;
+}
+
+.footer {
+	width: 100%;
+	position: fixed;
+	margin-top: 260px;
+}
+
+.footer p {
+	text-align: center;
+	color: #8E8E8E;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 935px) {
+	.info {
+		width: 100%;
+		position: absolute;
+		left: 0;
+		height: 45px;
+	}
+}

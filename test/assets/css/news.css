@@ -1,0 +1,269 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.html{
+	margin: 0;
+}
+.body{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	font-size: 1.4rem;
+	font-family: "微软雅黑";
+}
+
+.head{
+	width:100%;
+	height: 50px;
+	margin: 0px;
+	position: fixed;
+	background-color: #12b7f5;
+	z-index: 999;
+}
+
+
+.title{
+	width: 70px;
+	height: 30px;
+	/*position: absolute;*/
+	/*background: pink;*/
+	/*float: left;*/
+	padding-top: 10px;
+	margin: 0px auto;
+}
+
+.title span{
+	color: white;
+	font-weight: bold;
+	font-size: 1.4rem;
+	text-align: center;
+	/*background: yellow;*/
+	display: block;
+}
+
+
+.choose-newschannel-btn{
+	width:40px;
+	height: 40px;
+	position: absolute;
+	top: 0;
+	right: 8px;
+	/*background-color: bisque;*/
+	float: right;
+}
+
+.choose-newschannel-btn img{
+	width: 26px;
+	height: 26px;
+	position: absolute;
+	right: 0;
+	bottom: 3px;
+	/*background: green;*/
+}
+
+.choose-newschannel-btn img:hover{
+	cursor: pointer;
+}
+
+.newschannel{
+	position: fixed;
+	top: 50px;
+	width: 100%;
+	height: 90px;
+	background: #00BFFF;
+	display: none;
+	z-index: 999;
+	
+}
+
+.channelLine{
+	margin-top: 6px;
+	width: 100%;
+	height: 35px;
+	/*background: green;*/
+	float: left;
+}
+
+.channelLineCon{
+	width: 80%;
+	height: 90%;
+	margin: 0 auto;
+	/*background: pink;*/
+
+}
+
+.channel:first-child{
+	width: 28%;
+	height: 100%;
+	/*background: blue;*/
+	float: left;
+	
+	box-sizing: border-box;
+	border: solid 1px white;
+	border-radius: 5px;
+}
+
+.channel:nth-child(2),.channel:nth-child(3){
+	width: 28%;
+	height: 100%;
+	/*background: blue;*/
+	float: left;
+	margin-left: 8%;
+	box-sizing: border-box;
+	border: solid 1px white;
+	border-radius: 5px;
+}
+
+.channel:hover{
+	cursor: pointer;
+}
+
+.channelText{
+	width: 100%;
+	height: 60%;
+	/*background: gold;*/
+	margin-top:5px
+}
+
+.channelTextLine{
+	width: 60px;
+	height: 100%;
+	/*background: green;*/
+	margin: 0 auto;
+}
+.channel span{
+	font-size: 14px;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+}
+
+.content{
+	width: 96%;
+	/*background: yellow;*/
+	position: absolute;
+	top: 50px;
+	margin: 0px auto 69px auto;
+}
+
+.newsLine{
+	width: 100%;
+	height: 80px;
+	padding: 6px 6px 6px 12px;
+	/*background: green;*/
+	border-bottom: solid 1px #BBBBBB;
+	
+}
+
+.newsTitle{
+	width: 65%;
+	height: 100%;
+	padding-top: 8px;
+	/*background: pink;*/
+	float: left;
+	color: #454545;
+	/*margin-left: 8px;*/
+	font-weight: bold;
+}
+
+.newsImage{
+	width: 30%;
+	height: 100%;
+	margin-left: 3%;
+	/*background: #00BFFF;*/
+	float: left;
+}
+
+.newsImage img{
+	width: 100%;
+	height: 100%;
+}
+.foot{
+	width:100%;
+	height: 70px;
+	margin: 0px;
+	background-color: white;
+	border-top: solid 1px gainsboro;
+	position: fixed;
+	bottom: 0;
+}
+
+.contacts,.news,.find{
+	width: 33.33333%;
+	height: 100%;
+	/*background-color: coral;*/
+	float: left;
+}
+
+.contacts:hover,.news:hover,.find:hover{
+	cursor: pointer;
+	outline: none;
+}
+
+
+.footImgLine{
+	width: 100%;
+	height: 35px;
+	margin-top: 10px;
+	/*background: yellow;*/
+}
+
+.footImg{
+	height: 100%;
+	width: 30%;
+	/*background: green;*/
+	margin: 0 auto;
+}
+
+.footImg img{
+	height: 80%;
+	width: 90%;
+}
+
+.footTextLine{
+	width: 100%;
+	height: 15px;
+	margin-top: 0px;
+	/*background-color: yellow;*/
+}
+
+.footText{
+	height: 100%;
+	width: 30%;
+	margin: -3px auto 0 auto;
+	/*background-color: #12B7F5;*/
+}
+
+.footText span{
+	display: block;
+	color: #bfbfbf;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.footTextFocus{
+	height: 100%;
+	width: 30%;
+	margin: -3px auto 0 auto;
+	/*background-color: #12B7F5;*/
+}
+
+.footTextFocus span{
+	color: #12B7F5;
+	display: block;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	margin: 0 auto;
+}
+
+
+
+
+
+
+

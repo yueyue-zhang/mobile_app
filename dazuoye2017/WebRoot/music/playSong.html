@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>播放列表</title>
+	<link rel="stylesheet" href="css/playSong.css">
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.17.custom.min.js"></script>
+	<script type="text/javascript" src="js/playSong.js"></script>
+</head>
+<body>
+	<div>
+		<div class="player">
+			<div class="cover play" id="control"></div>
+			<div class="ctrl">
+				<div class="tag">
+					<strong id="songname"></strong>
+					<span class="artist" id="artist"></span>
+				</div>
+				<div class="control">
+					<div class="left">
+						<div class="rewind icon"></div>
+						<div class="playback icon"></div>
+						<div class="fastforward icon"></div>
+					</div>
+					<div class="volume right">
+						<div class="mute icon left"></div><!--音量图标-->
+						<div class="slider left"><!--长条-->
+							<div class="pace"></div><!--变化的点-->
+						</div>
+					</div>
+				</div>
+				<div class="progress">
+					<div class="slider">
+						<div class="loaded"></div>
+						<div class="pace"></div>
+					</div>
+				</div>
+				<div class="timer left">0:00</div>
+			</div>
+		</div>
+	</div>
+	<ul id="playlist"></ul>
+</body>
+</html>

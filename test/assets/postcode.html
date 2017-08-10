@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>邮编查询</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/postcode.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+</head>
+<body>
+	<div class="content">
+		<div class="code_title">
+			<span>邮编查询</span>
+		</div>
+		<!--信封-->
+		<div class="temp">
+			<div class="codeimg">
+			<img src="img/postcode/envelop_white.png" alt="">
+			</div>
+			<div class="codesearch">
+				<div class="search">
+					<span><input type="text" placeholder="请输入您想查询邮编的省市县" id="city"></span>
+				</div>
+				<div class="searchbtn">
+					<button type="button" id="btn">查&nbsp;&nbsp;询</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!--模态弹出框 弹出这个城市的邮编号码-->
+		<div class="modal fade" id="example">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<!--弹出框标题+关闭按钮-->
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">邮编号码</h4>
+					</div>
+					<div class="modal-body">
+						<p id="alert-body"></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	<script type="text/javascript">
+		$(function(){
+			$("#btn").click(function(){
+				//获取用户输入的城市名
+				var city=$("#city").val();
+				//alert(city);
+				postData(city);
+				$("#example").modal();
+			})
+		});
+		
+		function postData(city){
+			var info=city+"的邮编";
+			$.ajax({
+				type:"post",
+				url:"http://www.tuling123.com/openapi/api",
+				data:{"key":"6e330a8837ac4c92844cefe494835d6a","info":info},
+				dataType:"json",
+				beforeSend:function(){
+					//alert("正在请求服务器资源");
+				},    
+				success:function(data){
+					//alert(JSON.stringify(data));//将json转为字符串
+					//document.write(JSON.stringify(data))
+					$("#alert-body").html(data.text);
+				},  
+				error:function(){
+					alert("请求服务器资源失败！");
+				}
+			});
+		}
+	</script>
+</body>
+</html>

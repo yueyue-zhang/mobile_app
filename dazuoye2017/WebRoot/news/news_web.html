@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>新闻</title>
+		
+		<link rel="stylesheet" href="css/new_web.css" />
+		<link rel="stylesheet" href="../css/style.css" />
+	</head>
+	<script type="text/javascript" src="js/jquery-1.7.min.js" ></script>
+	<script type="text/javascript">
+		var jsons = [];
+		var i = 0;
+		$(function(){
+			
+			var channelBoxes = $('#left').find('#channel-Box');
+//			alert(channelBoxes.length);		
+			$(channelBoxes).each(function(i,element){
+				$(element).mouseover(function(){
+//					alert(i);
+					$(this).css("backgroundColor", "#00E3E3");
+					showNews(i);
+					for(var j=0;j<channelBoxes.length;j++){
+						if(j == i){
+							continue;
+						}
+						$(channelBoxes[j]).css("backgroundColor", "rgba(0, 0, 0, 0.65)");
+					}
+				})
+			});
+			
+			getNews("国内焦点");
+			
+			getNews("国际焦点");
+			getNews("娱乐焦点");
+			getNews("体育焦点");
+			getNews("科技焦点");
+			getNews("财经焦点");
+		});
+		
+		function success_function(json){
+			jsons.push(json);
+
+			if(i>=5){
+//				alert("加载成功");
+				showNews(0);
+			}
+		}
+
+		function showNews(id){
+//			for(var j=0;j<=5;j++){
+//				alert(j+"---->"+jsons[j].headNews.title);
+//			}
+			$('#head-news-title-text').empty();
+			$('#head-news-introduction-text').empty();
+			$('#other-news').empty();
+			$('#comment-box').empty();
+			
+			$('#head-news-title-text').append(
+				"<a href='"+ jsons[id].headNews.link +"'>"+
+					"<span>"+ jsons[id].headNews.title.substr(0,25) +"</span>"+
+				"</a>"
+			);
+			$('#head-news-introduction-text').append(
+				"<span>"+
+					jsons[id].headNews.desc.substr(0,100) +
+					"<a href='"+ jsons[id].headNews.link +"'>更多...</a>"+
+				"</span>"
+			);
+			
+			$.each(jsons[id].otherNewes,function(i,item){
+				$('#other-news').append(
+					"<div class='other-newes-box'>" +
+						"<div class='other-newes-con' >" +
+							"<div class='other-news-image'>"+
+								"<img src='"+ item.imgSrc +"' />"+
+							"</div>"+
+							"<div class='other-news-title'>"+
+								"<a href='"+ item.link +"'>"+
+									item.title.substr(0,30)+
+								"</a>"+
+							"</div>"+
+						"</div>" +
+					"</div>"
+					
+				);
+			});
+			
+			$.each(jsons[id].comments, function(i,item) {
+				$('#comment-box').append(
+					"<div class='comment-title-box'>"+
+						"<div class='comment-title-con'>"+
+							"<div class='comment-title-image'>"+
+								"<img src='"+ item.imgSrc +"' />"+
+							"</div>"+
+							"<div class='comment-title-text'>"+
+								"<a href='"+ item.link +"'>"+
+									item.title.substr(0,30) +
+								"</a>"+
+							"</div>"+
+						"</div>"+
+					"</div>"
+				);
+			});
+			
+			
+			
+			
+			
+		}
+		
+		function getNews(channelName){
+	
+			var json = {"otherNewes":[],"comments":[]};
+			
+			json['channelName'] = channelName;
+			
+			$.ajax({
+				type:"post",
+				url:"http://route.showapi.com/109-35?"+"showapi_appid=40124"+"&channelId="+"&channelName="+channelName+"&title="+"&page="+"&needContent="+"&needHtml="+"&needAllList="+"&maxResult="+"&showapi_sign=ef7ea56706c74e73a627cd9a4cebf517",
+				beforeSend:function(){
+//					alert("正在请求服务器资源");
+				}, 
+				async:false,
+				success:function(data){
+					var newsList = data.showapi_res_body.pagebean.contentlist;
+					
+					var headNewsTittle = newsList[0].title;
+					var headNewsDesc = newsList[0].desc;
+					var headNewsLink = newsList[0].link;
+					
+					json['headNews'] = {
+						"title":headNewsTittle,
+						"desc":headNewsDesc,
+						"link":headNewsLink
+					};
+										
+					$.each(newsList,function(i,item){
+						if(item.imageurls.length >0 && i!=0){
+							json['otherNewes'].push(
+								{
+									"title":item.title,
+									"link":item.link,
+									"imgSrc":item.imageurls[0].url
+								}
+							);
+						}
+					});
+					
+//					alert(json.headNews.title);
+//					alert(json.otherNewes[0].title);
+//					alert(channelName.substr(0,2)+"最新");
+					$.ajax({
+						type:"post",
+						url:"http://route.showapi.com/109-35?"+"showapi_appid=40124"+"&channelId="+"&channelName="+channelName.substr(0,2)+"最新"+"&title="+"&page=1"+"&needContent="+"&needHtml="+"&needAllList=1"+"&maxResult=10"+"&showapi_sign=ef7ea56706c74e73a627cd9a4cebf517",
+						async:false,
+						beforeSend:function(){
+							
+						},
+						success:function(data){
+							var commentsList = data.showapi_res_body.pagebean.contentlist;
+							$.each(commentsList,function(i,item){
+								if(item.imageurls.length >0){
+									json['comments'].push(
+										{
+											"title":item.title,
+											"link":item.link,
+											"imgSrc":item.imageurls[0].url
+										}
+									);
+								}
+							});
+							success_function(json);
+							i++;
+						},
+						error:function(){
+							alert("获取"+channelName+"频道评论失败");
+						}
+					});
+//					success_function(json);
+//					i++;
+					
+					
+					
+//					return json;
+/*					
+ * 
+					json = {
+						"channelName":channelName,
+						"headNews":{
+							"title":headNewsTittle,
+							"desc":headNewsDesc,
+							"link":headNewsLink
+						},
+						"otherNewes":[
+							{
+								"title":otherNewsTitle,
+								"link":otherNewsLink,
+								"imgSrc":otherNewsImgSrc
+							},
+							{
+								"title":otherNewsTitle,
+								"link":otherNewsLink,
+								"imgSrc":otherNewsImgSrc
+							}
+						],
+						"comments":[
+							{
+								"title":commentTitle,
+								"link":commentLink,
+								"imgSrc":commentImgSrc
+							},
+							{
+								"title":commentTitle,
+								"link":commentLink,
+								"imgSrc":commentImgSrc
+							}
+						]
+					};
+*/
+				},  
+				error:function(){
+					alert("请求服务器资源失败！");
+				}
+				
+			});
+			
+			
+		}
+	</script>
+	<body>
+		<div class="nav-all">
+		<div id="nav" >
+		 	<div class="first">
+			 	<a href=" " class="logo">
+			 		&#xe6fb;
+			 	</a>
+			</div>
+			<div class="nav-cen">
+			<ul class="nav">
+				<li><a href="#" class="work-btn">Work</a><span ></span></li>
+				<li><a href="#" class="services-btn">Services</a><span ></span></li>
+				<li><a href="#" class="contact-btn">Contact</a><span ></span></li>
+			</ul>
+			</div>
+			<div class="last">
+				<a href="../index.html" class="">
+					&#xe63c;
+					</a>
+			</div>
+		</div>
+		</div>
+		
+		<div class="contentBox">
+			<div class="contentCon">
+				<div class="left" id="left">
+					<div class="channel-Box" id="channel-Box">
+						<div class="channel-Line">
+							<span>国内新闻</span>
+						</div>
+					</div>
+					<div class="channel-Box" id="channel-Box">
+						<div class="channel-Line">
+							<span>国际焦点</span>
+						</div>
+					</div>
+					<div class="channel-Box" id="channel-Box">
+						<div class="channel-Line">
+							<span>娱乐简报</span>
+						</div>
+					</div>
+					<div class="channel-Box" id="channel-Box">
+						<div class="channel-Line">
+							<span>体坛快讯</span>
+						</div>
+					</div>
+					<div class="channel-Box" id="channel-Box">
+						<div class="channel-Line">
+							<span>科技前沿</span>
+						</div>
+					</div>
+					<div class="channel-Box" id="channel-Box">
+						<div class="channel-Line">
+							<span>金融时讯</span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="right">
+					<div class="head-news">
+						<div class="head-news-title">
+							<div class="head-news-title-text" id="head-news-title-text">
+								<!--<a href=""><span>习近平会见国际足联主席许进春</span></a>-->
+							</div>
+						</div>
+						<div class="head-news-introduction">
+							<div class="head-news-introduction-text" id="head-news-introduction-text">
+								<!--<span>国家主席习近平14日在人民大会堂会见国际足联主席许进春。习近平指出,建设体育大国和体育强国,是中国人民实现“两个一百年”奋斗目标的重要组成部分。中国政府高度重视发展足球运动,给予有力的、持续性的支持。<a href="">更多...</a></span>-->
+							</div>
+						</div>
+					</div>
+					
+					<div class="news-box">
+						<div class="other-newes" id="other-news">
+							<!--<div class="other-newes-box">
+								<div class="other-newes-con" >
+									<div class="other-news-image">
+										<img src="xxxx" />
+									</div>
+									<div class="other-news-title">
+										<a href="">完胜！中国男足力克德国队获2018年世界杯冠军创造历史！</a>
+									</div>
+									
+								</div>
+								
+							</div>-->
+						</div>
+						<div class="comment" >
+							<div class="comment-head-box">
+								<div class="comment-head-text">
+									<span>最新资讯</span>
+								</div>
+							</div>
+							<div class="coment-box" id="comment-box">
+								<!--<div class="comment-title-box">
+								<div class="comment-title-con">
+									<div class="comment-title-image">
+										<img src="xxxx" />
+									</div>
+									<div class="comment-title-text">
+										<a href="">时评：“足球梦”亦是中国梦的重要组成部分</a>
+									</div>
+								</div>
+								
+							</div>-->
+							</div>
+							
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

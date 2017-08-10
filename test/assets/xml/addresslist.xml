@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stus>
+    <stu>
+        <name>春春</name>
+        <phonenumber>18351930268</phonenumber>
+        <faceimg>addresslist_cc.jpg</faceimg>
+    </stu>
+    <stu>
+        <name>秋秋</name>
+        <phonenumber>18351938268</phonenumber>
+        <faceimg>addresslist_qq.jpg</faceimg>
+    </stu>
+    <stu>
+        <name>悦悦</name>
+        <phonenumber>18351933299</phonenumber>
+        <faceimg>addresslist_yy.jpg</faceimg>
+    </stu>
+    <stu>
+        <name>晨晨</name>
+        <phonenumber>183519331234</phonenumber>
+        <faceimg>addresslist_chch.jpg</faceimg>
+    </stu>
+</stus>

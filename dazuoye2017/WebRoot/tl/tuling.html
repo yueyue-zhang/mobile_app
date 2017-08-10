@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>图灵</title>
+<script type="text/javascript" src="js/echarts.common.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="css/tuling.css">
+<link rel="stylesheet" href="css/outer.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+
+</head>
+<body>
+	<div class="content">
+		<div id="nav" >
+		 	<div class="first">
+		 		<a href=" " class="logo">
+		 		&#xe6fb;
+		 		</a>
+		 	</div>
+		 	<div class="nav-cen">
+			<ul class="nav">
+				<li><a href="#" class="work-btn">Work</a><span ></span></li>
+				<li><a href="#" class="services-btn">Services</a><span ></span></li>
+				<li><a href="#" class="contact-btn">Contact</a><span ></span></li>
+			</ul>
+			</div>
+		 	<div class="last">
+		 		<a href="../index.html" class="">
+		 			&#xe63c;
+		 		</a>
+		 	</div>
+		</div>
+		<!--左边垂直导航栏-->
+		<div class="leftMenu">
+			<div class="topMenu">
+				<span><img src="images/banshidating.png" alt="">
+				</span> <span class="menuTitle">图灵接口</span> <span><img
+					src="images/shouqicaidan.png" alt="">
+				</span>
+			</div>
+			<div class="menu_list">
+				<ul>
+					<li id="li1"><a href="" class="fuMenu"><span>&#xe60b;&nbsp;&nbsp;</span>列车班次</a>
+					</li>
+					<li id="li2"><a href="" class="fuMenu">
+							<span>&#xe60a;&nbsp;&nbsp;</span>天气查询</a></li>
+					<li id="li3"><a href="" class="fuMenu">
+							<span>&#xe600;&nbsp;&nbsp;</span>菜谱查询</a></li>
+					<li id="li4"><a href="" class="fuMenu"><span>&#xe607;&nbsp;&nbsp;</span>快递查询</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!--右边内容展示区-->
+		<div class="rightContent">
+			<!--幻灯片展示-->
+			<div class="hdp">
+				<div class="mycarousel">
+					<div class="carousel" id="mycarousel">
+						<!--设置图片轮播计数器-->
+						<ol class="carousel-indicators">
+							<li data-target="#mycarousel" data-slide-to="0" class="active"></li>
+							<li data-target="#mycarousel" data-slide-to="1"></li>
+							<li data-target="#mycarousel" data-slide-to="2"></li>
+							<li data-target="#mycarousel" data-slide-to="3"></li>
+						</ol>
+						<!--轮播图片播放区-->
+						<div class="carousel-inner">
+							<!--放置图片-->
+							<div class="item active">
+								<img src="images/tl_train.png" alt="">
+							</div>
+							<div class="item">
+								<img src="images/tl_weather.png" alt="">
+							</div>
+							<div class="item">
+								<img src="images/tl_food.png" alt="">
+							</div>
+							<div class="item">
+								<img src="images/tl_delivery.png" alt="">
+							</div>
+						</div>
+						<!--设计图片轮播控制器-->
+						<a href="#mycarousel" class="left carousel-control"
+							data-slide="prev">&lsaquo;</a> <a href="#mycarousel"
+							class="right carousel-control" data-slide="next">&rsaquo;</a>
+					</div>
+				</div>
+			</div>
+			<!--列车班次-->
+			<div class="train">
+				<!--起点->终点-->
+				<div class="searchTrain">
+					<span><input type="text" placeholder="起点" id="start">
+					</span> <span><img src="images/train_change.png" alt="">
+					</span> <span><input type="text" placeholder="终点" id="end">
+					</span>
+
+					<div class="searchbtn">
+						<button type="button" id="train_btn">查&nbsp;&nbsp;询</button>
+					</div>
+				</div>
+				<!--四个图标-->
+				<div class="icon">
+					<div class="wrap">
+						<div class="image">
+							<img src="images/train_hotel.png" alt="">
+						</div>
+						<div class="introduce">
+							<span>酒店</span>
+						</div>
+					</div>
+					<div class="wrap">
+						<div class="image">
+							<img src="images/taix_1.png" alt="">
+						</div>
+						<div class="introduce">
+							<span>接送火车</span>
+						</div>
+					</div>
+					<div class="wrap">
+						<div class="image">
+							<img src="images/train_international.png" alt="">
+						</div>
+						<div class="introduce">
+							<span>国际火车</span>
+						</div>
+					</div>
+					<div class="wrap">
+						<div class="image">
+							<img src="images/train_taxi.png" alt="">
+						</div>
+						<div class="introduce">
+							<span>租车</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--天气查询-->
+			<div class="weather">
+				<div class="search_div">
+					<span> <input id="searchKey" type="search"
+						placeholder="请输入您想搜索天气的城市名称"> </span> <span><button
+							type="button" id="weather_btn">搜&nbsp;&nbsp;索</button>
+					</span>
+				</div>
+				<div id="main"></div>
+			</div>
+			<!--菜谱查询-->
+			<div class="food">
+				<div class="whole_content">
+					<div class="search_div">
+						<span> <input id="searchKey" type="search"
+							placeholder="搜索菜谱、食材"> </span> <span><img
+							src="images/search.png" alt="" onclick="search()">
+						</span>
+					</div>
+					<div class="popular_div">
+						<div class="popular_title">
+							<span>流行搜索</span>
+						</div>
+						<div class="popular_content">
+							<span onclick="search_popular(0)" class="popular_food">蛋糕</span>
+							<span onclick="search_popular(1)" class="popular_food">家常菜</span>
+							<span onclick="search_popular(2)" class="popular_food">早餐</span>
+							<span onclick="search_popular(3)" class="popular_food">排骨</span>
+							<span onclick="search_popular(4)" class="popular_food">红烧肉</span>
+							<span onclick="search_popular(5)" class="popular_food">冰淇淋</span>
+							<span onclick="search_popular(6)" class="popular_food">蛋挞</span>
+							<span onclick="search_popular(7)" class="popular_food">小龙虾</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--快递查询-->
+			<div class="delivery">
+				<div class="delivery_body">
+					<div class="delivery_business">
+						<span>公司名称</span> <span> <select name="" id="test">
+								<option value="yuantong">圆通快递</option>
+								<option value="zhongtong">中通快递</option>
+								<option value="shunfeng">顺丰快递</option>
+								<option value="EMS">EMS快递</option>
+								<option value="shentong">申通快递</option>
+								<option value="huitong">百世汇通快递</option>
+								<option value="yunda">韵达快递</option>
+								<option value="tiantian">天天快递</option>
+								<option value="quanyi">全一快递</option>
+						</select> </span>
+					</div>
+					<div class="delivery_number">
+						<span>快递单号</span> <span><input type="text"
+							placeholder="请输入您的快递单号" id="number">
+						</span> <span><button type="button" id="delivery_btn">查询</button>
+						</span>
+					</div>
+				</div>
+				<div class="wrap">
+					<div class="one" onclick="change('yuantong')">
+						<span><img src="images/delivery_yt.png" alt="">
+						</span> <span>圆通</span>
+					</div>
+					<div class="one" onclick="change('zhongtong')">
+						<span><img src="images/delivery_zt.png" alt="">
+						</span> <span>中通</span>
+					</div>
+					<div class="one" onclick="change('shunfeng')">
+						<span><img src="images/delivery_sf.png" alt="">
+						</span> <span>顺丰</span>
+					</div>
+					<div class="one" onclick="change('EMS')">
+						<span><img src="images/delivery_EMS.png" alt="">
+						</span> <span>EMS</span>
+					</div>
+					<div class="one" onclick="change('shentong')">
+						<span><img src="images/delivery_st.png" alt="">
+						</span> <span>申通</span>
+					</div>
+					<div class="one" onclick="change('huitong')">
+						<span><img src="images/delivery_bsht.png" alt="">
+						</span> <span>百世汇通</span>
+					</div>
+					<div class="one" onclick="change('yunda')">
+						<span><img src="images/delivery_yd.png" alt="">
+						</span> <span>韵达快递</span>
+					</div>
+					<div class="one" onclick="change('tiantian')">
+						<span><img src="images/delivery_tt.png" alt="">
+						</span> <span>天天快递</span>
+					</div>
+				</div>
+				<div class="track-rcol">
+					<div class="track-list">
+						<ul id="ulData">
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<script type="text/javascript">
+				$(function(){
+					$("#li1").css("backgroundColor", "#0065a5");
+				});
+				$("#li1").hover(function() {
+					$("#li1").css("backgroundColor", "#0065a5");
+					$("#li2").css("backgroundColor", "");
+					$("#li3").css("backgroundColor", "");
+					$("#li4").css("backgroundColor", "");
+					$(".train").css("display", "block");
+					$(".weather").css("display", "none");
+					$(".food").css("display", "none");
+					$(".delivery").css("display", "none");
+				});
+				$("#li2").hover(function() {
+					$("#li1").css("backgroundColor", "");
+					$("#li2").css("backgroundColor", "#0065a5");
+					$("#li3").css("backgroundColor", "");
+					$("#li4").css("backgroundColor", "");
+					$(".train").css("display", "none");
+					$(".weather").css("display", "block");
+					$(".food").css("display", "none");
+					$(".delivery").css("display", "none");
+				});
+				$("#li3").hover(function() {
+					$("#li1").css("backgroundColor", "");
+					$("#li2").css("backgroundColor", "");
+					$("#li3").css("backgroundColor", "#0065a5");
+					$("#li4").css("backgroundColor", "");
+					$(".train").css("display", "none");
+					$(".weather").css("display", "none");
+					$(".food").css("display", "block");
+					$(".delivery").css("display", "none");
+				});
+				$("#li4").hover(function() {
+					$("#li1").css("backgroundColor", "");
+					$("#li2").css("backgroundColor", "");
+					$("#li3").css("backgroundColor", "");
+					$("#li4").css("backgroundColor", "#0065a5");
+					$(".train").css("display", "none");
+					$(".weather").css("display", "none");
+					$(".food").css("display", "none");
+					$(".delivery").css("display", "block");
+				});
+				//列车班次被点击
+
+				$("#train_btn").click(function() {
+					//alert("查询")
+					var start = $("#start").val();
+					var end = $("#end").val();
+					if (start.length <= 0 || end.length <= 0) {
+						alert("起点或终点信息未填写！");
+					} else {
+						var info = "今天" + start + "到" + end + "的火车";
+						$.ajax({
+							type : "post",
+							url : "http://www.tuling123.com/openapi/api",
+							data : {
+								"key" : "6e330a8837ac4c92844cefe494835d6a",
+								"info" : info,
+								"userid" : "123456"
+							},
+							dataType : "json",
+							beforeSend : function() {
+								//alert("正在向服务器请求数据");
+							},
+							success : function(data) {
+								if (typeof (data.url) == "undefined") {
+									alert("起点或终点信息不存在！请核对后在搜索");
+								} else {
+									window.location.href = data.url;
+								}
+							},
+							error : function() {
+								alert("请求服务器资源失败");
+							}
+						});
+					}
+				});
+
+				function search() {
+					var food = $("#searchKey").val();
+					if (food == "") {
+						alert("请输入您想搜索的菜谱、食材！");
+					} else {
+						var info = food + "怎么做";
+						postFoodData(info);
+					}
+				}
+
+				function search_popular(id) {
+					var popular_food = document
+							.getElementsByClassName("popular_food");
+					var current_food = popular_food[id].innerHTML;
+					//alert(current_food)
+					var info = current_food + "怎么做";
+					postFoodData(info);
+				}
+
+				function postFoodData(info) {
+					$.ajax({
+						type : "post",
+						url : "http://www.tuling123.com/openapi/api",
+						data : {
+							"key" : "6e330a8837ac4c92844cefe494835d6a",
+							"info" : info
+						},
+						dataType : "json",
+						beforeSend : function() {
+							//alert("正在请求服务器资源");
+						},
+						success : function(data) {
+							if (typeof (data.url) == "undefined") {
+								alert("暂时没有此菜谱的信息");
+							} else {
+								window.location.href = data.url;
+							}
+						},
+						error : function() {
+							alert("请求服务器资源失败！");
+						}
+					});
+				}
+
+				function change(name) {
+					$("#test").val(name);
+				}
+
+				$("#delivery_btn").click(function() {
+					//alert("查询按钮被点击")
+					//取到快递公司的值
+					var options = $("#test option:selected").val();
+					//取到快递单号的值
+					var delivery_code = $("#number").val();
+					if (options.length <= 0 || delivery_code.length <= 0) {
+						alert("快递公司或快递单号的值未填写");
+					} else {
+						postDeliveryData(options, delivery_code);
+					}
+				});
+
+				/*options--哪个快递公司 delivery_code--快递单号*/
+				function postDeliveryData(options, delivery_code) {
+					$
+							.ajax({
+								type : "post",
+								url : " http://route.showapi.com/64-19",
+								data : {
+									"showapi_appid" : "40545",
+									"showapi_sign" : "e2ee2b1b11a64b3da2526413fa141187",
+									"com" : options,
+									"nu" : delivery_code
+								},
+								dataType : "json",
+								beforeSend : function() {
+									//alert("正在请求服务器资源");
+								},
+								success : function(backdata) {
+									//alert(backdata);
+									var listDatas = backdata.showapi_res_body.data;
+									//alert(listDatas.length)
+									var firstLiData = "";
+									var liDatas = "";
+									var i = 0;
+									$
+											.each(
+													listDatas,
+													function(index, row) {
+														var time = row.time;
+														var context = row.context;
+														if (i == 0) {
+															liDatas += "<li class='first'>";
+															liDatas += "<i class='node-icon'></i>";
+															liDatas += "<span class='time'>"
+																	+ time
+																	+ "</span>";
+															liDatas += "<span class='txt'>"
+																	+ context
+																	+ "</span>";
+															liDatas += "</li>";
+															i++;
+														} else {
+															liDatas += "<li>";
+															liDatas += "<i class='node-icon'></i>";
+															liDatas += "<span class='time'>"
+																	+ time
+																	+ "</span>";
+															liDatas += "<span class='txt'>"
+																	+ context
+																	+ "</span>";
+															liDatas += "</li>";
+														}
+													});
+									//alert(liDatas)
+									$("#ulData").html(liDatas);
+									$(".delivery .wrap").css("display", "none");
+									$(".track-rcol").css("display", "block");
+								},
+								error : function() {
+									alert("请求服务器资源失败！");
+								}
+							});
+				}
+
+				$("#weather_btn")
+						.click(
+								function() {
+									//获取用户输入的城市名称
+									var cityName = $("#searchKey").val();
+									var curWeek, minTemp, maxTemp;
+									var week = [];
+									var min = [];
+									var max = [];
+									$
+											.ajax({
+												type : "post",
+												url : "http://www.tuling123.com/openapi/api",
+												data : {
+													"key" : "6e330a8837ac4c92844cefe494835d6a",
+													"info" : cityName + "天气"
+												},
+												dataType : "json",
+												beforeSend : function() {
+													//alert("正在请求服务器资源");
+												},
+												success : function(data) {
+													var msg = data.text;
+													var newStr = msg
+															.substring(
+																	msg
+																			.indexOf(":") + 1,
+																	msg
+																			.lastIndexOf(";"));
+													var dataArray = newStr
+															.split(";");
+													var futureData = "";
+													for ( var i = 1; i < dataArray.length; i++) {
+														//按照分号分割
+														var dataOne = dataArray[i]
+																.split(" ");
+														var future = dataOne[1]
+																.split(",");
+														var futureTemp = future[1]
+																.split("-");
+														week.push(future[0]);
+														min.push(futureTemp[0]);
+
+														max
+																.push(futureTemp[1]
+																		.substring(
+																				0,
+																				2));
+													}
+													var Temp = dataArray[0]
+															.split(" ");
+													var curTemp = Temp[2];
+													var curWeather = Temp[3];
+
+													var curToday = Temp[0];//6月12号
+													var cur = Temp[1]
+															.split(",");
+													curWeek = cur[0];
+													//document.write(curWeek)
+													var temp = cur[1]
+															.split("-");
+													minTemp = temp[0];
+													maxTemp = temp[1];
+													maxTemp=maxTemp.substring(0,2);
+													charts(curWeek, minTemp,
+															maxTemp, week, min,
+															max);
+												},
+												error : function() {
+													alert("请求服务器资源失败！");
+												}
+											});
+								});
+
+				function charts(curWeek, minTemp, maxTemp, week, min, max) {
+					var myChart = echarts.init(document.getElementById('main'));
+					var option = {
+						title : {
+							text : '未来三天气温变化'
+						},
+						tooltip : {
+							trigger : 'axis'
+						},
+						legend : {
+							data : [ '最高气温', '最低气温' ]
+						},
+						toolbox : {
+							show : true,
+							feature : {
+								mark : {
+									show : true
+								},
+								dataView : {
+									show : true,
+									readOnly : false
+								},
+								magicType : {
+									show : true,
+									type : [ 'line', 'bar' ]
+								},
+								restore : {
+									show : true
+								},
+								saveAsImage : {
+									show : true
+								}
+							}
+						},
+						calculable : true,
+						xAxis : [ {
+							type : 'category',
+							boundaryGap : false,
+							data : [ curWeek, week[0], week[1], week[2] ]
+						} ],
+						yAxis : [ {
+							type : 'value',
+							axisLabel : {
+								formatter : '{value} °C'
+							}
+						} ],
+						series : [ {
+							name : '最高气温',
+							type : 'line',
+							data : [ maxTemp, max[0], max[1], max[2] ],
+							markPoint : {
+								data : [ {
+									type : 'max',
+									name : '最大值'
+								}, {
+									type : 'min',
+									name : '最小值'
+								} ]
+							},
+							markLine : {
+								data : [ {
+									type : 'average',
+									name : '平均值'
+								} ]
+							}
+						}, {
+							name : '最低气温',
+							type : 'line',
+							data : [ minTemp, min[0], min[1], min[2] ],
+							markPoint : {
+								data : [ {
+									name : '周最低',
+									value : -2,
+									xAxis : 1,
+									yAxis : -1.5
+								} ]
+							},
+							markLine : {
+								data : [ {
+									type : 'average',
+									name : '平均值'
+								} ]
+							}
+						} ]
+					}
+					myChart.setOption(option);
+				}
+			</script>
+</body>
+</html>
